@@ -14,7 +14,7 @@ type Task struct {
 }
 
 var (
-	mu = sync.Mutex{}
+	mu    = sync.Mutex{}
 	tasks = []Task{{ID: 1, Title: "Build PR reviewer", Done: false}}
 )
 
@@ -51,6 +51,7 @@ func createTask(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	mux := http.NewServeMux()
+	//APIs
 	mux.HandleFunc("GET /tasks", getTasks)
 	mux.HandleFunc("POST /tasks", createTask)
 	log.Println("Task API listening on :8080")
